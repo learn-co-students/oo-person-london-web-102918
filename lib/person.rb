@@ -2,7 +2,7 @@ require 'pry'
 
 class Person
 
-    #attr_accessor :bank_account, :happiness, :hygiene
+    attr_accessor :bank_account, :happiness, :hygiene
     #attr_reader :name
     #hello this is some stuff and stuff
 
@@ -26,10 +26,25 @@ class Person
   end
 
   def happy?
+    if @happiness > 7
+      true
+    else
+      false
+    end
+  end
+
 
 
   def hygiene
     @hygiene
+  end
+
+  def clean?
+    if @hygiene > 7
+      true
+    else
+      false
+    end
   end
 
 end
