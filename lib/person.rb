@@ -4,9 +4,8 @@ require 'pry'
 
 class Person
 
-  attr_reader :name
+  attr_reader :name, :happiness, :hygiene
   attr_accessor :bank_account, :salary
-  attr_writer :happiness, :hygiene
 
   @@all = []
 
@@ -19,23 +18,21 @@ class Person
     @@all << self
   end
 
-  def happiness
+  def happiness=(amount)
+    @happiness = amount
     if @happiness > 10
       @happiness = 10
     elsif @happiness < 0
       @happiness = 0
-    else @happiness
     end
   end
 
-# Happiness can exceed 10 but the reader returns 10
-
-  def hygiene
+  def hygiene=(amount)
+    @hygiene = amount
     if @hygiene > 10
       @hygiene = 10
     elsif @hygiene < 0
       @hygiene = 0
-    else @hygiene
     end
   end
 
@@ -49,12 +46,10 @@ class Person
 
   def get_paid(amount)
     @salary = amount
+    amount < 10 ? self.happiness += 1 : self.happiness += 2
     @bank_account += @salary
     "all about the benjamins"
   end
-
-
-# self.hygiene is calling the method
 
   def take_bath
     self.hygiene += 4
